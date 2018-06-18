@@ -5,6 +5,7 @@ import { MAP_API_KEY } from './data/auth';
 import { FS_CLIENT_ID } from './data/auth';
 import { FS_CLIENT_SECRET } from './data/auth';
 import { locations } from './data/locations';
+import { mapStyle } from './data/mapStyle';
 import markerDefault from './images/marker-default.png';
 import markerSelected from './images/marker-selected.png';
 import foursquareLogo from './images/foursquare.png';
