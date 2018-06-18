@@ -87,7 +87,7 @@ class Filter extends Component {
 
   openInfoWindow = (e) => {
     console.log(e);
-    this.state.markers.map((marker) => {
+    this.state.markers.forEach((marker) => {
       if (e.name === marker.name) {
         if (checkGetData === true) {
           this.state.infowindow.setContent(
