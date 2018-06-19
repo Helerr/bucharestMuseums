@@ -132,7 +132,7 @@ class App extends Component {
 
   getData() {
     let places = [];
-    locations.forEach((location) => {
+    locations.map((location) =>
       fetch(`https://api.foursquare.com/v2/venues/${location.venueId}` +
         `?client_id=${FS_CLIENT_ID}` +
         `&client_secret=${FS_CLIENT_SECRET}` +
@@ -146,7 +146,7 @@ class App extends Component {
           checkGetData = false;
           console.log(error);
         })
-    });
+    );
 
     this.setState({
       markers: places
