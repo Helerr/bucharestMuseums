@@ -25,112 +25,111 @@ class App extends Component {
       infowindow: {}
     }
 
-    this.initMap = this.initMap.bind(this);
     this.getData = this.getData.bind(this);
   }
 
-  componentDidMount() {
-    window.initMap = this.initMap;
-  }
-
-  initMap() {
-
-    this.getData();
-
-    buildMap = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: -22.9139064, lng: -43.0963434 },
-      zoom: 12,
-      styles: mapStyle,
-      mapTypeControl: false,
-      fullscreenControl: false
-    });
-
-    const buildInfoWindow = new window.google.maps.InfoWindow({maxWidth: 320});
-    const bounds = new window.google.maps.LatLngBounds();    
-    const myEvents = 'click keypress'.split(' ');
-    let buildMarkers = [];
-    let allLocations = [];
-
-    setTimeout(() => {
-
-      if (this.state.markers.length === 12) {
-        allLocations = this.state.markers;
-        console.log(allLocations);
-        checkGetData = true;
-      } else {
-        allLocations = locations;
-        console.log(allLocations);
-      }
-  
-      for (let i = 0; i < allLocations.length; i++) {
-        let position = {lat: allLocations[i].location.lat, lng: allLocations[i].location.lng};
-        let name = allLocations[i].name;
-        let address = allLocations[i].location.address;
-        let lat = allLocations[i].location.lat;
-        let lng = allLocations[i].location.lng;
-        let bestPhoto = '';
-        let rating = '';
-        let likes = '';
-        let tips = '';
-        let moreInfo = '';
-
-        if (checkGetData === true) {
-          bestPhoto = allLocations[i].bestPhoto.prefix.concat('width300', allLocations[i].bestPhoto.suffix);
-          rating = allLocations[i].rating;
-          likes = allLocations[i].likes.count;
-          tips = allLocations[i].tips.groups[0].items[0].text;
-          moreInfo = allLocations[i].canonicalUrl;
-        }
-  
-        let marker = new window.google.maps.Marker({
-          id: i,
-          map: buildMap,
-          position: position,
-          name: name,
-          title: name,
-          address: address,
-          lat: lat,
-          lng: lng,
-          bestPhoto: bestPhoto,
-          rating: rating,
-          likes: likes,
-          tips: tips,
-          moreInfo: moreInfo,
-          icon: markerDefault,
-          animation: window.google.maps.Animation.DROP
-        });
-        
-        buildMarkers.push(marker);
-        
-        for (let i = 0; i < myEvents.length; i++) {
-          marker.addListener(myEvents[i], function() {
-            addInfoWindow(this, buildInfoWindow);
-            this.setAnimation(window.google.maps.Animation.BOUNCE);
-            setTimeout(function () {
-              marker.setAnimation(null);
-            }, 1000);
-          });
-        }
-  
-        marker.addListener('mouseover', function() {
-          this.setIcon(markerSelected);
-        });
-  
-        marker.addListener('mouseout', function() {
-          this.setIcon(markerDefault);
-        });
-  
-        bounds.extend(buildMarkers[i].position);
-      }
-  
-      buildMap.fitBounds(bounds);
-  
-      this.setState({
-        map: buildMap,
-        markers: buildMarkers,
-        infowindow: buildInfoWindow
+  componentWillReceiveProps({isScriptLoadSucceed}) {
+    if (isScriptLoadSucceed) {
+      this.getData();
+    
+      buildMap = new window.google.maps.Map(document.getElementById('map'), {
+        center: { lat: -22.9139064, lng: -43.0963434 },
+        zoom: 12,
+        styles: mapStyle,
+        mapTypeControl: false,
+        fullscreenControl: false
       });
-    }, 800);
+    
+      const buildInfoWindow = new window.google.maps.InfoWindow({maxWidth: 320});
+      const bounds = new window.google.maps.LatLngBounds();    
+      const myEvents = 'click keypress'.split(' ');
+      let buildMarkers = [];
+      let allLocations = [];
+    
+      setTimeout(() => {
+    
+        if (this.state.markers.length === 12) {
+          allLocations = this.state.markers;
+          console.log(allLocations);
+          checkGetData = true;
+        } else {
+          allLocations = locations;
+          console.log(allLocations);
+        }
+    
+        for (let i = 0; i < allLocations.length; i++) {
+          let position = {lat: allLocations[i].location.lat, lng: allLocations[i].location.lng};
+          let name = allLocations[i].name;
+          let address = allLocations[i].location.address;
+          let lat = allLocations[i].location.lat;
+          let lng = allLocations[i].location.lng;
+          let bestPhoto = '';
+          let rating = '';
+          let likes = '';
+          let tips = '';
+          let moreInfo = '';
+    
+          if (checkGetData === true) {
+            bestPhoto = allLocations[i].bestPhoto.prefix.concat('width300', allLocations[i].bestPhoto.suffix);
+            rating = allLocations[i].rating;
+            likes = allLocations[i].likes.count;
+            tips = allLocations[i].tips.groups[0].items[0].text;
+            moreInfo = allLocations[i].canonicalUrl;
+          }
+    
+          let marker = new window.google.maps.Marker({
+            id: i,
+            map: buildMap,
+            position: position,
+            name: name,
+            title: name,
+            address: address,
+            lat: lat,
+            lng: lng,
+            bestPhoto: bestPhoto,
+            rating: rating,
+            likes: likes,
+            tips: tips,
+            moreInfo: moreInfo,
+            icon: markerDefault,
+            animation: window.google.maps.Animation.DROP
+          });
+          
+          buildMarkers.push(marker);
+          
+          for (let i = 0; i < myEvents.length; i++) {
+            marker.addListener(myEvents[i], function() {
+              addInfoWindow(this, buildInfoWindow);
+              this.setAnimation(window.google.maps.Animation.BOUNCE);
+              setTimeout(function () {
+                marker.setAnimation(null);
+              }, 1000);
+            });
+          }
+    
+          marker.addListener('mouseover', function() {
+            this.setIcon(markerSelected);
+          });
+    
+          marker.addListener('mouseout', function() {
+            this.setIcon(markerDefault);
+          });
+    
+          bounds.extend(buildMarkers[i].position);
+        }
+    
+        buildMap.fitBounds(bounds);
+    
+        this.setState({
+          map: buildMap,
+          markers: buildMarkers,
+          infowindow: buildInfoWindow
+        });
+      }, 800);
+
+    } else {
+      alert('Sorry, Google Maps can&apos;t be loaded. Try later!');
+    }
   }
 
   getData() {
@@ -198,5 +197,5 @@ function addInfoWindow(marker, infowindow) {
 }
 
 export default scriptLoader(
-  [`https://maps.googleapis.com/maps/api/js?key=${MAP_API_KEY}&callback=initMap`]
+  [`https://maps.googleapis.com/maps/api/js?key=${MAP_API_KEY}`]
 )(App);
