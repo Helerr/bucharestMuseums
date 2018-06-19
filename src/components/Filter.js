@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import markerDefault from '../images/marker-default.png';
 import markerSelected from '../images/marker-selected.png';
 import foursquareLogo from '../images/foursquare.png';
-import { checkGetData } from '../App';
+import { checkGetData } from './App';
 
 class Filter extends Component {
   constructor(props) {

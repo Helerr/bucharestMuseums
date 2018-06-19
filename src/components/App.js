@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 import scriptLoader from 'react-async-script-loader';
-import { MAP_API_KEY } from './data/auth';
-import { FS_CLIENT_ID } from './data/auth';
-import { FS_CLIENT_SECRET } from './data/auth';
-import { locations } from './data/locations';
-import { mapStyle } from './data/mapStyle';
-import markerDefault from './images/marker-default.png';
-import markerSelected from './images/marker-selected.png';
-import foursquareLogo from './images/foursquare.png';
-import Map from './components/Map';
-import Filter from './components/Filter';
+import { MAP_API_KEY } from '../data/auth';
+import { FS_CLIENT_ID } from '../data/auth';
+import { FS_CLIENT_SECRET } from '../data/auth';
+import { locations } from '../data/locations';
+import { mapStyle } from '../data/mapStyle';
+import markerDefault from '../images/marker-default.png';
+import markerSelected from '../images/marker-selected.png';
+import foursquareLogo from '../images/foursquare.png';
+import Map from './Map';
+import Filter from './Filter';
 
 let buildMap = {};
 export let checkGetData = '';
