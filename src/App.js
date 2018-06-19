@@ -127,7 +127,7 @@ class App extends Component {
         markers: buildMarkers,
         infowindow: buildInfoWindow
       });
-    }, 500);
+    }, 800);
   }
 
   getData() {
