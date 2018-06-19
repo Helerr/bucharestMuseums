@@ -9,7 +9,7 @@ export const locations = [
     venueId: '4c9355386cfea093210cb98b'
   },
   {
-    name: 'Praia da Boa Viagem',
+    name: 'Praia de Boa Viagem',
     location: {
       address: 'Av. Alm. Benjamin Sodré',
       lat: -22.907922,
