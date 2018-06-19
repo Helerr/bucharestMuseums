@@ -142,3 +142,57 @@
   max-width: 100%;
   vertical-align: middle;  
 }
+
+/* Media queries */
+
+@media screen and (max-width: 825px) {
+
+  .app-title {
+    left: calc(50% - 177px);
+    font-size: 1.5em;
+  }
+
+  .filter {
+    width: 25%;
+  }
+
+  .filter-input {
+    width: calc(100% - 20px);
+    padding: 15px 10px;
+    font-size: 1em;
+  }
+
+  .filter-item {
+    padding: 15px 10px;
+  }
+
+  .filter-item-action {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width: 415px) {
+
+  .app-title {
+    left: calc(50% - 153px);
+    font-size: 1.2em;
+  }
+
+  .filter {
+    width: 45%;
+  }
+
+  .filter-input {
+    width: calc(100% - 20px);
+    padding: 15px 10px;
+    font-size: 1em;
+  }
+
+  .filter-item {
+    padding: 15px 10px;
+  }
+
+  .filter-item-action {
+    font-size: 0.7em;
+  }
+}
