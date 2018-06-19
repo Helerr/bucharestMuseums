@@ -194,4 +194,8 @@
   .filter-item-action {
     font-size: 0.7em;
   }
+
+  .info-wrap {
+    height: 320px;
+  }
 }
