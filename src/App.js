@@ -47,6 +47,7 @@ class App extends Component {
 
     const buildInfoWindow = new window.google.maps.InfoWindow({maxWidth: 320});
     const bounds = new window.google.maps.LatLngBounds();    
+    const myEvents = 'click keypress'.split(' ');
     let buildMarkers = [];
     let allLocations = [];
 
@@ -101,13 +102,15 @@ class App extends Component {
         
         buildMarkers.push(marker);
         
-        marker.addListener('click', function() {
-          addInfoWindow(this, buildInfoWindow);
-          this.setAnimation(window.google.maps.Animation.BOUNCE);
-          setTimeout(function () {
-            marker.setAnimation(null);
-          }, 1000);
-        });
+        for (let i = 0; i < myEvents.length; i++) {
+          marker.addListener(myEvents[i], function() {
+            addInfoWindow(this, buildInfoWindow);
+            this.setAnimation(window.google.maps.Animation.BOUNCE);
+            setTimeout(function () {
+              marker.setAnimation(null);
+            }, 1000);
+          });
+        }
   
         marker.addListener('mouseover', function() {
           this.setIcon(markerSelected);
