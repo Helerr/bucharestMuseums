@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Courgette|Handlee');
+@import url(https://fonts.googleapis.com/css?family=Courgette|Handlee);
 
 #map {
   width: 100%;
@@ -18,7 +18,7 @@
   position: relative;
   left: calc(50% - 215px);
   color: #222;
-  font-family: 'Handlee', cursive;
+  font-family: "Handlee", cursive;
 }
 
 .filter {
@@ -71,19 +71,18 @@
 .btnFilter {
   width: 32px;
   display: block;
-  background-repeat: no-repeat;
-  background-position: 15px center;
+  background: 15px center no-repeat;
   padding: 20px 15px;
   text-indent: -9999px;
   cursor: pointer;
 }
 
 .btnFilter_open {
-  background-image: url('./images/filter-btn-pink.png');
+  background-image: url(./images/filter-btn-pink.png);
 }
 
 .btnFilter_close {
-  background-image: url('./images/filter-btn-yellow.png');
+  background-image: url(./images/filter-btn-yellow.png);
 }
 
 .filter-top {
