@@ -16,22 +16,28 @@ let buildMap = {};
 export let checkGetData = '';
 
 class App extends Component {
+  // Constructor
   constructor(props) {
     super(props);
 
+    // Initial states
     this.state = {
       map: {},
       markers: [],
       infowindow: {}
     }
-
+    // Binding the getData function to this
     this.getData = this.getData.bind(this);
   }
 
   componentWillReceiveProps({isScriptLoadSucceed}) {
+    // Conditional to initialize the map when the script loads
     if (isScriptLoadSucceed) {
+
+      // Calls this function to fetch Foursquare data asynchronously
       this.getData();
-    
+
+      // Initialize Google Maps    
       buildMap = new window.google.maps.Map(document.getElementById('map'), {
         center: { lat: -22.9139064, lng: -43.0963434 },
         zoom: 12,
@@ -47,11 +53,21 @@ class App extends Component {
       let allLocations = [];
     
       setTimeout(() => {
-    
+
+        /**
+        * Checks if the markers state get Foursquare data for all markers
+        * else the markers will be built with the locations stored in the data directory
+        */
         if (this.state.markers.length === 12) {
           allLocations = this.state.markers;
           console.log(allLocations);
+
+          /**
+          * Confirmation that Foursquare data has been received
+          * this information will be used in other parts of the App
+          */
           checkGetData = true;
+
         } else {
           allLocations = locations;
           console.log(allLocations);
@@ -96,7 +112,8 @@ class App extends Component {
           });
           
           buildMarkers.push(marker);
-          
+
+          // Adds event listeners to all created markers          
           for (let i = 0; i < myEvents.length; i++) {
             marker.addListener(myEvents[i], function() {
               addInfoWindow(this, buildInfoWindow);
@@ -119,7 +136,8 @@ class App extends Component {
         }
     
         buildMap.fitBounds(bounds);
-    
+
+        // Updates states with prepared data    
         this.setState({
           map: buildMap,
           markers: buildMarkers,
@@ -127,11 +145,19 @@ class App extends Component {
         });
       }, 800);
 
+    // Indication when the map can't be loaded
     } else {
       alert('Sorry, Google Maps can&apos;t be loaded. Try later!');
     }
   }
 
+  /**
+  * @description Fetch Foursquare data asynchronously
+  * @param {object} location
+  * @param {object} response
+  * @param {object} data
+  * @param {object} error
+  */
   getData() {
     let places = [];
     locations.map((location) =>
@@ -150,12 +176,14 @@ class App extends Component {
         })
     );
 
+    // Updates the markers state with the data obtained
     this.setState({
       markers: places
     });
     console.log(this.state.markers);
   }
   
+  // Renders the App
   render() {
     return (
       <div className="App">
@@ -170,6 +198,12 @@ class App extends Component {
   }
 }
 
+/**
+* @description Opens the infowindow
+* @param {object} marker
+* @param {object} infowindow
+* @param {object} buildMap
+*/
 function addInfoWindow(marker, infowindow) {
   if (checkGetData === true) {
     infowindow.setContent(
@@ -196,6 +230,7 @@ function addInfoWindow(marker, infowindow) {
   infowindow.open(buildMap, marker);
 }
 
+// Load the Google Maps asynchronously
 export default scriptLoader(
   [`https://maps.googleapis.com/maps/api/js?key=${MAP_API_KEY}`]
 )(App);

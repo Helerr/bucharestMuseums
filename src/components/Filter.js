@@ -5,9 +5,11 @@ import foursquareLogo from '../images/foursquare.png';
 import { checkGetData } from './App';
 
 class Filter extends Component {
+  // Constructor
   constructor(props) {
     super(props);
 
+    // Initial states
     this.state = {
       query: '',
       map: {},
@@ -16,6 +18,7 @@ class Filter extends Component {
       currentMarkers: []
     }
 
+    // Binding functions to this
     this.showFilter = this.showFilter.bind(this);
     this.hideFilter = this.hideFilter.bind(this);
     this.markerFilter = this.markerFilter.bind(this);
@@ -24,6 +27,8 @@ class Filter extends Component {
 
   componentWillMount() {
     setTimeout(() => {
+
+      // Updates states with the props
       this.setState({
         map: this.props.map,
         markers: this.props.markers,
@@ -33,12 +38,20 @@ class Filter extends Component {
     }, 1000);
   }
 
+  /**
+  * Opens the filter when the icon is activated
+  * Any infowindow is closed when the filter is opened
+  */ 
   showFilter() {
     const filter = document.querySelector('.filter');
     filter.classList.add('filter_open');
     this.props.infowindow.close();
   }
 
+  /**
+  * Closes the filter when the icon is activated
+  * Clears the query input and show all markers again
+  */ 
   hideFilter() {
     const filter = document.querySelector('.filter');
     filter.classList.remove('filter_open');
@@ -51,6 +64,12 @@ class Filter extends Component {
     this.state.currentMarkers.forEach((marker) => marker.setVisible(true));
   }
 
+  /**
+  * @description Filters markers based on user query,
+  * only the markers that match the query are displayed
+  * @param {object} e
+  * @param {object} marker
+  */
   markerFilter(e) {
     const filteredMarkers = [];
     const markers = this.state.currentMarkers;
@@ -85,6 +104,12 @@ class Filter extends Component {
     }
   }
 
+  /**
+  * @description Opens the infowindow when a list item is activated,
+  * checks and activates the animations
+  * @param {object} e
+  * @param {object} marker
+  */
   openInfoWindow = (e) => {
     console.log(e);
     this.state.markers.forEach((marker) => {
@@ -126,6 +151,7 @@ class Filter extends Component {
     });
   }
 
+  // Renders the filter, markers list and header
   render() {
 
     const { query, markers } = this.state;
