@@ -18,6 +18,7 @@ Built with: HTML, CSS, JavaScript, React and API usage.
 ### Production Mode
 - To create a production build use `npm run build`
 - Navigate to the build directory and start the server with `npm run deploy`
+- This mode includes a Service Worker.
 
 ## Resources:
 - [Google Maps Platform Documentation](https://developers.google.com/maps/documentation/)
