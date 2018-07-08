@@ -186,7 +186,7 @@ class App extends Component {
   // Renders the App
   render() {
     return (
-      <div className="App">
+      <div className='App' role='main'>
         <Filter
           map={ this.state.map }
           markers={ this.state.markers }
