@@ -170,7 +170,7 @@ class Filter extends Component {
         </div>
         <h1 className='app-title'>Niterói&apos;s Sun Umbrellas</h1>
 
-        <div className='filter'>
+        <div id='filter' className='filter'>
           <div className='filter-top'>
             <div
               onClick={ hideFilter }
