@@ -5,11 +5,11 @@ import foursquareLogo from '../images/foursquare.png';
 import { checkGetData } from './App';
 
 class Filter extends Component {
-  // Constructor
+  // constructor
   constructor(props) {
     super(props);
 
-    // Initial states
+    // the initial states for the app
     this.state = {
       query: '',
       map: {},
@@ -18,7 +18,7 @@ class Filter extends Component {
       currentMarkers: []
     }
 
-    // Binding functions to this
+    // // binding functions to "this"
     this.showFilter = this.showFilter.bind(this);
     this.hideFilter = this.hideFilter.bind(this);
     this.markerFilter = this.markerFilter.bind(this);
@@ -28,7 +28,7 @@ class Filter extends Component {
   componentWillMount() {
     setTimeout(() => {
 
-      // Updates states with the props
+      // updates the states with the props
       this.setState({
         map: this.props.map,
         markers: this.props.markers,
@@ -39,8 +39,8 @@ class Filter extends Component {
   }
 
   /**
-  * Opens the filter when the icon is activated
-  * Any infowindow is closed when the filter is opened
+  * opens the filter when the icon is activated
+  * all the infowindows are closed when the filter is opened
   */ 
   showFilter() {
     const filter = document.querySelector('.filter');
@@ -49,8 +49,8 @@ class Filter extends Component {
   }
 
   /**
-  * Closes the filter when the icon is activated
-  * Clears the query input and show all markers again
+  * closes the filter when the icon is activated
+  * clears the query input and show all markers again
   */ 
   hideFilter() {
     const filter = document.querySelector('.filter');
@@ -113,11 +113,11 @@ class Filter extends Component {
   openInfoWindow = (e) => {
     console.log(e);
     this.state.markers.forEach((marker) => {
-      if (e.name === marker.name) {
+      if (e) {
         if (checkGetData === true) {
           this.state.infowindow.setContent(
             '<div class="info-wrap">'+
-            '<img class="info-photo" src='+e.bestPhoto+' alt="Beach photo"><br>'+
+            '<img class="info-photo" src='+e.bestPhoto+' alt="Museum photo"><br>'+
             '<h2 class="info-name">'+e.name+'</h2><br>'+
             '<p class="info-position">Latitude: '+e.lat+'</p><br>'+
             '<p class="info-position">Longitude: '+e.lng+'</p><br>'+
@@ -132,7 +132,7 @@ class Filter extends Component {
         } else {
           this.state.infowindow.setContent(
             '<div class="error-wrap">'+
-            '<p class="error-message">Sorry, Foursquare data can&apos;t be loaded!</p><br>'+
+            '<p class="error-message">Sorry, Foursquare data can`t be loaded!</p><br>'+
             '</div>'
           );
         }
@@ -141,17 +141,19 @@ class Filter extends Component {
 
         if (e.getAnimation() !== null) {
           e.setAnimation(null);
+          console.log("None");
         } else {
           e.setAnimation(window.google.maps.Animation.BOUNCE);
           setTimeout(() => {
             e.setAnimation(null);
           }, 1000);
+          console.log("some");
         }
       }
     });
   }
 
-  // Renders the filter, markers list and header
+  // renders the filter, markers and header
   render() {
 
     const { query, markers } = this.state;
@@ -168,7 +170,7 @@ class Filter extends Component {
           title='Open filter'>
           Filter
         </div>
-        <h1 className='app-title'>Niterói&apos;s Sun Umbrellas</h1>
+        <h1 className='app-title'>Bucharest Museums</h1>
 
         <div id='filter' className='filter'>
           <div className='filter-top'>
@@ -178,7 +180,8 @@ class Filter extends Component {
               className='btnFilter btnFilter_close'
               role='button'
               tabIndex="0"
-              title='Close filter'>
+              title='Close filter'
+              aria-label='Museum List'>
               Out
             </div>
           </div>
@@ -187,13 +190,13 @@ class Filter extends Component {
             className='filter-input'
             type='text'
             role='form'
-            aria-labelledby='filter'
+            aria-label='Sidebar Menu'
             tabIndex="0"
             placeholder='Filter by name'
             value={ query }
           />
           <ul className='filter-list'>
-            {Object.keys(markers).map(i => (
+            {Object.keys(markers).map((i) => (
               <li className='filter-item' key={ i }>
                 <p 
                   onClick={ () => openInfoWindow(markers[i]) }
@@ -210,10 +213,11 @@ class Filter extends Component {
               </li>
             ))}
           </ul>
+          <img className="info-fslogo" src={foursquareLogo} alt="Powered by Foursquare"/>
         </div>
       </div>
     );
   }
 }
 
-export default Filter;
+export default Filter

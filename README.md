@@ -1,38 +1,26 @@
-# Neighborhood Map Project
-This project was developed through the Udacity - Front-End Web Developer Nanodegree Program.
+# Neighborhood Map - Bucharest Museums
+This is the final project for Udacity - Front End Development Nanodegree.
 
-Built with: HTML, CSS, JavaScript, React and API usage.
+The project was built using the following: HTML, CSS, JavaScript, React, Maps API and Foursquare API
 
-## Project description:
-- A single page application featuring a neighborhood map and a listing of Beaches in Niterói, Brazil.
-- The Google Maps API is used to generate the map. The Foursquare API is used to get information to display when a marker is clicked. Information such as photos, address, rating, likes and tips are displayed.
-- A filter feature and animations makes it easy to navigate between the Markers.
-- This application follow this [Udacity Project Rubric](https://review.udacity.com/#!/rubrics/1351/view)
+## Description:
+- This is a single page applications that features a neighborhood map and lists some of the famous museums in Bucharest, Romania.
+-For generating the map, I used the the Maps API by Google and Foursquare was used to get information displayed for the museum markers when clicked.
+- The menu in the top-left corner can be opened to reveal a list of all the locations and filter through them by using letters or keywords for the location that you are searching.
 
-## Instructions for load the application:
-### Development Mode
-- Download or Clone the Repository.
-- Install all project dependencies with `npm install`
+## How to:
+
+- Extract the archive and open the project folder
+- Open a console and install all the dependencies by using `npm install`
 - Start the server with `npm start`
+- Go to the browser and type: `http://localhost:3000/` (replace 3000 with the port that you chose to start the server on) in the address bar if a window wasn't already opened when you started the server
+- Browse the application and explore the neighborhood and museums
 
-### Production Mode
-- To create a production build use `npm run build`
-- Navigate to the build directory and start the server with `npm run deploy`
-- This mode includes a Service Worker.
+## To run a production build:
 
-## Resources:
-- [Google Maps Platform Documentation](https://developers.google.com/maps/documentation/)
-- [Foursquare API](https://developer.foursquare.com/)
-- [Create-react-app](https://github.com/facebook/create-react-app)
-- [React-async-script-loader](https://www.npmjs.com/package/react-async-script-loader)
-- [Snazzy Maps](https://snazzymaps.com/)
-- [Flaticon](https://www.flaticon.com/)
-
-## Udacity Guides:
-- [Udacity CSS Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/css.html)
-- [Udacity Git Commit Message Style Guide](https://udacity.github.io/git-styleguide/)
-- [Udacity HTML Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/index.html)
-- [Udacity JavaScript Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html)
-
-## License:
-The content of this repository is licensed under a MIT license.
+- Open the project folder
+- Open a console and run `npm run build`
+- If suggested, install the dependency required with `npm install -g serve`
+- Run `serve -s build` in the console
+- Open the browser and type: `http://localhost:3000/` (replace 3000 with the port that you chose to start the server on) in the address bar if a window wasn't already opened when you started the server
+- Browse the application and explore the neighborhood and museums

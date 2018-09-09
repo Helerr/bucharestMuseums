@@ -16,31 +16,32 @@ let buildMap = {};
 export let checkGetData = '';
 
 class App extends Component {
-  // Constructor
+  // constructor
   constructor(props) {
     super(props);
 
-    // Initial states
+    // the initial states for the app
     this.state = {
       map: {},
       markers: [],
       infowindow: {}
     }
-    // Binding the getData function to this
+    // binding getData function to "this"
     this.getData = this.getData.bind(this);
   }
 
   componentWillReceiveProps({isScriptLoadSucceed}) {
-    // Conditional to initialize the map when the script loads
+
+    //check if the script is loaded to initialize the map
     if (isScriptLoadSucceed) {
 
-      // Calls this function to fetch Foursquare data asynchronously
+      // of the script is loaded a call is made to this function to fetch Foursquare data asynchronously
       this.getData();
 
-      // Initialize Google Maps    
+      // Maps initialization    
       buildMap = new window.google.maps.Map(document.getElementById('map'), {
-        center: { lat: -22.9139064, lng: -43.0963434 },
-        zoom: 12,
+        center: { lat: 44.434857, lng: 26.103215 },
+        zoom: 10,
         styles: mapStyle,
         mapTypeControl: false,
         fullscreenControl: false
@@ -55,15 +56,15 @@ class App extends Component {
       setTimeout(() => {
 
         /**
-        * Checks if the markers state get Foursquare data for all markers
-        * else the markers will be built with the locations stored in the data directory
+        * checks if the markers get Foursquare data
+        * if not, the markers will be built with the locations stored in data/locations.js
         */
-        if (this.state.markers.length === 12) {
+        if (this.state.markers.length >= 4) {
           allLocations = this.state.markers;
           console.log(allLocations);
 
           /**
-          * Confirmation that Foursquare data has been received
+          * verified that foursquare data was received
           * this information will be used in other parts of the App
           */
           checkGetData = true;
@@ -113,7 +114,7 @@ class App extends Component {
           
           buildMarkers.push(marker);
 
-          // Adds event listeners to all created markers          
+          // adds event listeners to all created markers          
           for (let i = 0; i < myEvents.length; i++) {
             marker.addListener(myEvents[i], function() {
               addInfoWindow(this, buildInfoWindow);
@@ -137,7 +138,7 @@ class App extends Component {
     
         buildMap.fitBounds(bounds);
 
-        // Updates states with prepared data    
+        // updates states with loaded data    
         this.setState({
           map: buildMap,
           markers: buildMarkers,
@@ -145,9 +146,9 @@ class App extends Component {
         });
       }, 800);
 
-    // Indication when the map can't be loaded
+    // alerting the user when Maps can't be loaded
     } else {
-      alert('Sorry, Google Maps can&apos;t be loaded. Try later!');
+      alert('Sorry, Google Maps can`t be loaded. Try later!');
     }
   }
 
@@ -176,14 +177,14 @@ class App extends Component {
         })
     );
 
-    // Updates the markers state with the data obtained
+    // updating the markers state with the data obtained
     this.setState({
       markers: places
     });
     console.log(this.state.markers);
   }
   
-  // Renders the App
+  // render application
   render() {
     return (
       <div className='App' role='main'>
@@ -208,8 +209,8 @@ function addInfoWindow(marker, infowindow) {
   if (checkGetData === true) {
     infowindow.setContent(
       '<div class="info-wrap">'+
-      '<img class="info-photo" src='+marker.bestPhoto+' alt="Beach photo"><br>'+
-      '<h2 class="info-name">'+marker.name+'</h2><br>'+
+      '<img class="info-photo" src='+marker.bestPhoto+' aria-labelledby="museum_name"><br>'+
+      '<h2 class="info-name" id="museum_name">'+marker.name+'</h2><br>'+
       '<p class="info-position">Latitude: '+marker.lat+'</p><br>'+
       '<p class="info-position">Longitude: '+marker.lng+'</p><br>'+
       '<p class="info-address">Address: '+marker.address+'</p><br>'+
@@ -230,7 +231,7 @@ function addInfoWindow(marker, infowindow) {
   infowindow.open(buildMap, marker);
 }
 
-// Load the Google Maps asynchronously
+//load Google Maps asynchronously
 export default scriptLoader(
   [`https://maps.googleapis.com/maps/api/js?key=${MAP_API_KEY}`]
 )(App);

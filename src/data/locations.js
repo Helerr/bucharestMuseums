@@ -1,110 +1,83 @@
 export const locations = [
   {
-    name: 'Praia das Flexas',
+    name: 'Muzeul Aviatiei',
     location: {
-      address: 'Av. Alm. Benjamin Sodré',
-      lat: -22.905536,
-      lng: -43.121184
+      address: 'Str. Fabrica de Glucoză nr. 2-4',
+      lat: 44.475627,
+      lng: 26.10771
     },
-    venueId: '4c9355386cfea093210cb98b'
+    venueId: '4d91b36380d33704d3ada106'
   },
   {
-    name: 'Praia de Boa Viagem',
+    name: 'Muzeul Național de Istorie Naturală „Grigore Antipa”',
     location: {
-      address: 'Av. Alm. Benjamin Sodré',
-      lat: -22.907922,
-      lng: -43.128304
+      address: 'Șoseaua Pavel Dimitrievici Kiseleff 1',
+      lat: 44.454615,
+      lng: 26.084496
     },
-    venueId: '4ec90a5629c22cc60e32550d'
+    venueId: '4ce00f0178ddf04d682aa498'
   },
   {
-    name: 'Praia Adão e Eva',
+    name: 'Muzeul Național de Artă al României',
     location: {
-      address: 'Estr. Eurico Gaspar Dutra',
-      lat: -22.927619,
-      lng: -43.122774
+      address: 'Calea Victoriei 49',
+      lat: 44.438044,
+      lng: 26.097206
     },
-    venueId: '4e462126d164155c0de19443'
+    venueId: '4bef0939c80dc928b86627e3'
   },
   {
-    name: 'Praia de Camboinhas',
+    name: 'Muzeul Național "George Enescu"',
     location: {
-      address: 'Pr. de Camboinhas',
-      lat: -22.959705,
-      lng: -43.065926
+      address: 'Calea Victoriei 141',
+      lat: 44.448769,
+      lng: 26.088443
     },
-    venueId: '4b7bed9ef964a52038742fe3'
+    venueId: '4cfa671c0df3236a3192f3a9'
   },
   {
-    name: 'Praia de Charitas',
+    name: 'Muzeul Național de Istorie a României',
     location: {
-      address: 'Av. Quintino Bocaiúva',
-      lat: -22.928311,
-      lng: -43.096708
+      address: 'Palatul Poștelor (Calea Victoriei nr. 12)',
+      lat: 44.43205,
+      lng: 26.096499
     },
-    venueId: '4c68297cd9c7c9b637a0c31a'
+    venueId: '4ba85767f964a5203bd739e3'
   },
   {
-    name: 'Praia do Gragoatá',
+    name: 'Muzeul Militar Național "Regele Ferdinand I"',
     location: {
-      address: 'Av. Litorânea',
-      lat: -22.902148,
-      lng: -43.136088
+      address: 'Str. Mircea Vulcănescu nr. 125-127 (Str. Făgăraș)',
+      lat: 44.441853,
+      lng: 26.07683
     },
-    venueId: '4d8b9bf5bb88f04d5f639b3a'
+    venueId: '4d8c3e7212496a312401dad8'
   },
   {
-    name: 'Praia de Icaraí',
+    name: 'Muzeul Țăranului Român',
     location: {
-      address: 'Av. Jorn. Alberto Francisco Torres',
-      lat: -22.907855,
-      lng: -43.112385
+      address: 'Șos. Pavel Dimitrievici Kiseleff nr. 3 (str. Monetăriei)',
+      lat: 44.454615,
+      lng: 26.084496
     },
-    venueId: '4d4493f20349224b73bbfb4e'
+    venueId: '4ba7bc33f964a52064ae39e3'
   },
   {
-    name: 'Praia de Itacoatiara',
+    name: 'Muzeul Colecțiilor de Artă',
     location: {
-      address: 'Av. Beira Mar',
-      lat: -22.974513,
-      lng: -43.033853
+      address: 'Palatul Romanit (Calea Victoriei nr. 111)',
+      lat: 44.444755,
+      lng: 26.091136
     },
-    venueId: '4be5baf9cf200f47fda1133c'
+    venueId: '51b46b2c498ecbdf29c825b8'
   },
   {
-    name: 'Praia de Itaipu',
+    name: 'Muzeul Municipiului București',
     location: {
-      address: 'Pr. de Itaipu',
-      lat: -22.97041,
-      lng: -43.046051
+      address: 'Bd. I. C. Brătianu nr. 2 (Str. Ion Ghica)',
+      lat: 44.434102,
+      lng: 26.101088
     },
-    venueId: '4d8e409c1d06b1f7ae83443b'
-  },
-  {
-    name: 'Praia de Piratininga',
-    location: {
-      address: 'Av. Alm. Tamandaré',
-      lat: -22.954775,
-      lng: -43.085944
-    },
-    venueId: '4c10731fce640f47970b3a52'
-  },
-  {
-    name: 'Praia de São Francisco',
-    location: {
-      address: 'Av. Quintino Bocaiúva',
-      lat: -22.918187,
-      lng: -43.094938
-    },
-    venueId: '4c027550cbd876b0e246f143'
-  },
-  {
-    name: 'Praia do Sossego',
-    location: {
-      address: 'R. Des. Nicolau Mary Jr., Camboinhas',
-      lat: -22.957882,
-      lng: -43.070021
-    },
-    venueId: '4d0fee196b315941ba9741ec'
+    venueId: '4ba85e49f964a52050d839e3'
   }
 ]
